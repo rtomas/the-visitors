@@ -24,7 +24,7 @@ const ListOwner = () => {
       <div className="ProductList">
         {loading && <div>loading</div>}
         {error && <div>{error.message}</div>}
-        {data?.owners.map((data) => (
+        {data?.owners.map((data: any) => (
           <Owner address={data.address} numTokens={data.numTokens} />
         ))}
       </div>
