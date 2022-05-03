@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+First version to show the top 10 holders of The Visitors usign a subgraph.
+
+- Web: https://thevisitorsnft.com/
+- Opensea colection: https://opensea.io/assets/matic/0x0a0bf65248805efa926c39bf51b6dd94e3d1a7af/9767
+- SmartContrat of the colection: https://polygonscan.com/address/0x0a0bf65248805efa926c39bf51b6dd94e3d1a7af
+- Subgraph: https://api.thegraph.com/subgraphs/name/rtomas/the-visitors
 
 ## Getting Started
 
