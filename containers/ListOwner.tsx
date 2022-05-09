@@ -5,7 +5,7 @@ import { gql, useQuery } from "@apollo/client";
 
 const TOP_OWNERS_QUERY = gql`
   query ($topNumber: Int) {
-    owners(orderBy: numTokens, orderDirection: desc, first: $topNumber, where: { address_not: "0x0000000000000000000000000000000000000000" }) {
+     accounts(orderBy:numTokens,orderDirection:desc, first: $topNumber) {
       address
       numTokens
     }
@@ -15,7 +15,7 @@ const TOP_OWNERS_QUERY = gql`
 const ListOwner = () => {
   const { loading, error, data } = useQuery(TOP_OWNERS_QUERY, {
     variables: {
-      topNumber: 10,
+      topNumber: 5,
     },
   });
 
