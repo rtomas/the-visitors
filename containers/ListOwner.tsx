@@ -5,7 +5,7 @@ import { gql, useQuery } from "@apollo/client";
 
 const TOP_OWNERS_QUERY = gql`
   query ($topNumber: Int) {
-     accounts(orderBy:numTokens,orderDirection:desc, first: $topNumber) {
+    accounts(orderBy: numTokens, orderDirection: desc, first: 5) {
       address
       numTokens
     }
@@ -24,7 +24,7 @@ const ListOwner = () => {
       <div className="ProductList">
         {loading && <div>loading</div>}
         {error && <div>{error.message}</div>}
-        {data?.owners.map((data: any) => (
+        {data?.accounts.map((data: any) => (
           <Owner address={data.address} numTokens={data.numTokens} />
         ))}
       </div>
