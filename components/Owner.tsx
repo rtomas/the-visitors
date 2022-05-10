@@ -1,4 +1,5 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { TableContainer, TableHead, Table, TableRow, TableCell, Paper, TableBody } from "@mui/material";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
 
 interface OwnerProps {
   address: string;
@@ -6,17 +7,7 @@ interface OwnerProps {
 }
 
 function Owner(props: OwnerProps) {
-  return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div" color="text.secondary">
-          Address: {props.address}
-          <br />
-          Amount: {props.numTokens}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+  return <div></div>;
 }
 
 export default Owner;

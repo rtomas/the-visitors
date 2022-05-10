@@ -6,17 +6,20 @@ import { cropAddress } from "../utils/etherHelper";
 
 import { gql, useQuery } from "@apollo/client";
 
-const TOP_OWNERS_QUERY = gql`
+const LAST_MINT_TOKENS_QUERY = gql`
   query ($topNumber: Int) {
-    accounts(orderBy: numTokens, orderDirection: desc, first: 5) {
-      address
-      numTokens
+    tokens(first: 5, orderBy: mintTime, orderDirection: desc) {
+      tokenID
+      owner {
+        id
+      }
+      uri
     }
   }
 `;
 
-const ListOwner = () => {
-  const { loading, error, data } = useQuery(TOP_OWNERS_QUERY, {
+const ListNewTokens = () => {
+  const { loading, error, data } = useQuery(LAST_MINT_TOKENS_QUERY, {
     variables: {
       topNumber: 5,
     },
@@ -32,19 +35,17 @@ const ListOwner = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Address</TableCell>
-              <TableCell align="center">Amount</TableCell>
-              <TableCell align="center">&nbsp;</TableCell>
+              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Owner</TableCell>
+              <TableCell align="center">URI</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.accounts.map((data: any) => (
+            {data?.tokens.map((data: any) => (
               <TableRow key={data.address} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                <TableCell align="left">{cropAddress(data.address)}</TableCell>
-                <TableCell align="center">{data.numTokens}</TableCell>
-                <TableCell align="center">
-                  <InsertLinkIcon />
-                </TableCell>
+                <TableCell align="center">{data.tokenID}</TableCell>
+                <TableCell align="center">{cropAddress(data.owner.id)}</TableCell>
+                <TableCell align="center">{data.uri}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -54,4 +55,4 @@ const ListOwner = () => {
   );
 };
 
-export default ListOwner;
+export default ListNewTokens;
