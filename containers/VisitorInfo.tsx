@@ -2,6 +2,7 @@ import React from "react";
 import Owner from "../components/Owner";
 import { TableContainer, TableHead, Table, TableRow, TableCell, Paper, TableBody } from "@mui/material";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import { timestampToDate } from "../utils/etherHelper";
 
 import { gql, useQuery } from "@apollo/client";
 
@@ -44,6 +45,18 @@ const VisitorInfo = () => {
               <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                 <TableCell align="left">Number of accounts</TableCell>
                 <TableCell align="center">{data.numAccounts}</TableCell>
+              </TableRow>
+              <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                <TableCell align="left">Last Mint</TableCell>
+                <TableCell align="center">{timestampToDate(data.lastMintDate)}</TableCell>
+              </TableRow>
+              <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                <TableCell align="left">Last Burn</TableCell>
+                <TableCell align="center">{timestampToDate(data.lastBurned)}</TableCell>
+              </TableRow>
+              <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                <TableCell align="left">Last Transfer</TableCell>
+                <TableCell align="center">{timestampToDate(data.lastTransferDate)}</TableCell>
               </TableRow>
             </TableBody>
           ))}

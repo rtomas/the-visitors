@@ -4,13 +4,7 @@ import ListOwners from "../containers/ListOwner";
 import VisitorInfo from "../containers/VisitorInfo";
 import ListNewTokens from "../containers/ListNewTokens";
 import styles from "../styles/Home.module.css";
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from "@apollo/client";
 import { Grid } from "@mui/material";
-
-const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_API_GRAPH_VISITORS,
-  cache: new InMemoryCache(),
-});
 
 const Home: NextPage = () => {
   return (
@@ -21,28 +15,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ApolloProvider client={client}>
-        <main className={styles.main}>
-          <h3 className={styles.title}> the visitors info</h3>
-          <br></br>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <h3 className={styles.title}>General Information</h3>
-              <VisitorInfo />
-            </Grid>
-            <Grid item xs={4}>
-              <h2 className={styles.title}>Get Top 5 Holders of Visitors</h2>
-              <ListOwners />
-            </Grid>
-            <Grid item xs={4}>
-              <h2 className={styles.title}>Get Last 5 Mint</h2>
-              <ListNewTokens />
-            </Grid>
+      <main className={styles.main}>
+        <h3 className={styles.title}> the visitors info</h3>
+        <br></br>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <h3 className={styles.title}>General Information</h3>
+            <VisitorInfo />
           </Grid>
+          <Grid item xs={4}>
+            <h2 className={styles.title}>Get Top 5 Holders of Visitors</h2>
+            <ListOwners />
+          </Grid>
+          <Grid item xs={4}>
+            <h2 className={styles.title}>Get Last 5 Mint</h2>
+            <ListNewTokens />
+          </Grid>
+        </Grid>
 
-          <footer className={styles.footer}></footer>
-        </main>
-      </ApolloProvider>
+        <footer className={styles.footer}></footer>
+      </main>
     </div>
   );
 };
